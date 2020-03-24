@@ -1,0 +1,43 @@
+#bg{
+  position: relative;
+  height: 600px;
+  width: 100%;
+  background-image: url("homebackground.png");
+  filter: blur(6px);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+img{
+  position: absolute;
+  top: 200px;
+  left: 10%;
+  width: 70%;
+  height: 65%;
+}
+.homeform {
+  background-color: white;
+  position: absolute;
+  top: 300px;
+  right:10%;
+  width: 300px;
+  height: 400px;
+  padding-left: 30px;
+  padding-top: 30px;
+}
+.mat-fab {
+  top:60px;
+}
+// .container{
+//   margin-top:80px;
+// }
+.eventname {
+  font-size:30px;
+  font-weight:600;
+  // margin-left:-19%;
+}
+::placeholder{
+  color:#1E4FD5;
+  font-size:36px;
+  font-weight:bold;
+}

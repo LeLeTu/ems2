@@ -1,0 +1,47 @@
+ <div id="bg">
+ </div>
+  <img src="/assets/homebackground.png">
+  <form class="homeform" (ngSubmit)="onSubmit(homeform.value)" #homeform="ngForm">
+    <div>I want to go out</div>
+    <mat-form-field>
+      <mat-label>Start Date</mat-label>
+      <input matInput [matDatepicker]="picker" id="startdate" name="startdate" ngModel #startdate = "ngModel">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>End Date</mat-label>
+      <input matInput [matDatepicker]="picker1" id="enddate" name="enddate" ngModel #startdate = "ngModel">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <div>In</div>
+    <mat-form-field>
+      <mat-placeholder>Zipcode</mat-placeholder>
+      <input type="text" matInput id="Zipcode" name="Zipcode" ngModel #Zipcode="ngModel" >
+    </mat-form-field>
+    <div>And I am interested in for</div>
+    <mat-form-field>
+      <mat-select id="category" name="category" name="category" ngModel #startdate = "ngModel">
+        <mat-option value="festival">Festival</mat-option>
+        <mat-option value="movie">Movie</mat-option>
+        <mat-option value="sport">Sport</mat-option>
+        <mat-option value="family">Family</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-fab color="primary">Go!</button>
+  </form>
+
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <!-- <form>
+    <label class="eventname">Events in</label>
+     <input type="text" style="border-bottom: 2px solid #d0d0d0;height:46px;" placeholder="Zipcode,City, State" matInput id="Zipcode" name="Zipcode" ngModel #Zipcode="ngModel" >  
+  </form> -->
+<app-products>Events In</app-products>
+
+
+

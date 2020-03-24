@@ -1,0 +1,21 @@
+<main class="container">
+  <mat-card fxFlex.gt-sm="60%" fxFlexOffset.gt-sm="20%">
+    <mat-card-title>Login</mat-card-title>
+    <formfxLayout="column" #loginForm="ngForm" >
+      <mat-form-field>
+        <mat-placeholder>Email</mat-placeholder>
+        <input type="text" matInput id="username" name="username" ngModel #name="ngModel" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-placeholder>Password</mat-placeholder>
+        <input matInput id="password" name="password" ngModel #password="ngModel" required>
+      </mat-form-field>
+      <mat-checkbox >Show Password</mat-checkbox>
+      <div>
+        <button type="submit" mat-raised-button color="primary">Login</button>
+        <a mat-button color="primary" >Register</a>
+        <a mat-button color="primary" >Forget Password</a>
+      </div>
+    </form>
+  </mat-card>
+</main>
