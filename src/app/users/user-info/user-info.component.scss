@@ -1,0 +1,36 @@
+.container{
+width:40%;
+margin-top:3%;
+text-align:center;
+}
+.mat-raised-button {
+    margin-left:40px;
+
+}
+.example-small-box, .example-large-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.example-small-box {
+  height: 300px;
+  width: 400px;
+}
+
+.example-large-box {
+  height: 300px;
+  width: 300px;
+}
+h2{
+  color: #ff4411;
+   transition: .5s; -moz-transition: .5s; 
+   -webkit-transition: .5s; 
+   -o-transition: .5s;
+   font-weight:700;
+   font-size: 36px;
+   margin-bottom:39px;
+}

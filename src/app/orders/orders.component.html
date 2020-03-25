@@ -1,0 +1,20 @@
+<mat-card fxFlex.gt-sm="60%" fxFlexOffset.gt-sm="20%">
+  <mat-card-title>Customer Order</mat-card-title>
+  <form (ngSubmit)="onSubmit()" fxLayout="column" #customerorderForm="ngForm">
+    <mat-form-field>
+      <mat-placeholder>Customer Order ID</mat-placeholder>
+      <input type="text" matInput name="customerOrderID" [(ngModel)]="customerOrder.customerOrderID">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-placeholder>Customer ID</mat-placeholder>
+      <input type="text" matInput name="customerID" [(ngModel)]="customerOrder.customerID">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-placeholder>Order Time</mat-placeholder>
+      <input type="text" matInput name="orderTime" [(ngModel)]="customerOrder.orderTime">
+    </mat-form-field>
+    <div>
+      <button type="submit" mat-raised-button color="primary">Find Customer Order</button>
+    </div>
+  </form>
+</mat-card>

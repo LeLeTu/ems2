@@ -1,0 +1,89 @@
+<div class="container1">
+<div fxLayout fxLayoutAlign="center" style="margin: 50px 50px;">
+  <mat-card id = "matcard" fxLayout="column" fxFlex="1 1 50%" fxFlex.lt-sm="1 1 auto">
+    <form [formGroup]="registerFormGroup" (ngSubmit)="onSubmit()" fxLayout="column" #registerForm="ngForm">
+      <mat-card-title>Create account</mat-card-title>
+      <div>
+        <mat-form-field>
+          <mat-label>Choose Role</mat-label>
+          <mat-select id="role" name="role"  formControlName="role">
+            <mat-option value="user">User</mat-option>
+            <mat-option value="organizer">Organizer</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-placeholder>Name</mat-placeholder>
+          <input type="text" matInput id="name" formControlName="name" required>
+          <mat-error *ngIf="registerFormGroup.controls['name'].invalid">
+              {{getError('name')}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-placeholder>Email</mat-placeholder>
+          <input type="text" matInput id="email" formControlName="email" required>
+          <mat-error *ngIf="registerFormGroup.controls['email'].invalid">
+            {{getError('email')}}
+        </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-placeholder>Phone</mat-placeholder>
+          <input type="text" [textMask]="{mask: mask}" matInput id="phone" formControlName="phone" required>
+          <mat-error *ngIf="registerFormGroup.controls['phone'].invalid">
+            {{getError('phone')}}
+        </mat-error>
+        </mat-form-field>
+      </div>
+        <div>
+          <mat-form-field>
+            <mat-placeholder>Password</mat-placeholder>
+            <input [type]="show ? 'text' : 'password'" matInput id="password" formControlName="password" required>
+            <mat-error *ngIf="registerFormGroup.get('password').invalid && registerFormGroup.get('password').errors.required && (registerFormGroup.get('password').touched || registerFormGroup.get('password').dirty)">
+              password is required
+            </mat-error>
+            <mat-error *ngIf="registerFormGroup.get('password').invalid && registerFormGroup.get('password').errors.minlength">
+              Password must be at least 8 characters
+            </mat-error>
+            <mat-error *ngIf="registerFormGroup.get('password').invalid && registerFormGroup.get('password').hasError('passwordStrength')">
+              {{registerFormGroup.get('password').errors['passwordStrength']}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-placeholder>Confirm Password</mat-placeholder>
+            <input [type]="show ? 'text' : 'password'" matInput id="confirm_password" formControlName="confirm_password" required>
+            <mat-error *ngIf="registerFormGroup.controls['confirm_password'].invalid && (registerFormGroup.get('confirm_password').touched || registerFormGroup.get('confirm_password').dirty)">
+              {{getError('confirm_password')}}
+          </mat-error>
+          </mat-form-field>
+        </div>
+      <div>
+        <mat-checkbox (click)="myFunction()">Show Password</mat-checkbox>
+      </div>
+      <!-- <mat-error *ngIf="registerForm.submitted && err">
+        Username or password are not valid. Try to use new ones.
+      </mat-error> -->
+      <mat-checkbox [disabled]="isDisabled" (click)="checkbox()"></mat-checkbox> <span>I have read and agree to the <button mat-raised-button style="background-color: transparent; width:100px; color:#0000ff;box-shadow: none; font-size:14px; text-decoration: underline;" (click)="openBottomSheet2()">Terms of Use </button>and <button mat-raised-button style="background-color: transparent; width:100px; color:#0000ff;box-shadow: none; font-size:14px; text-decoration: underline;" (click)="openBottomSheet()">Privacy Policy</button></span>
+      <p>
+        <button type="submit" mat-raised-button color="primary">Create Account</button>
+      </p>
+    </form>
+  </mat-card>
+</div>
+<div class="social"> <span>or sign up with social media</span></div>
+<div class="buttons">
+  <button class="facebook"><i class="fa fa-facebook"></i>Facebook</button>
+  <button class="twitter"><i class="fa fa-twitter"></i>Twitter</button>
+  <button class="google"><i class="fa fa-google-plus"></i>Google</button>
+</div>
+<div class="already">Already have an account? <a id="login" (click)="onSignin()">Sign In</a></div>
+</div>
+
+
+

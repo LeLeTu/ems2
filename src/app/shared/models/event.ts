@@ -1,0 +1,29 @@
+export class Event {
+  venue_name: string;
+  other_details: string;
+  city: string;
+  timezone: string;
+  latitude: number;
+  discount: number;
+  event_type_code: number;
+  organizer_id: number;
+  event_start_time: string;
+  comments: string
+  street1: string;
+  state: string;
+  event_type_description: string;
+  event_photo_url: string;
+  venue_id: number;
+  longitude: number;
+  commercial_type: string;
+  event_status_description: string;
+  number_of_participants: number;
+  event_end_time: string;
+  zipcode: number;
+  event_id: number;
+  event_status_code: number;
+  event_cost: number;
+  event_name: number;
+  organizer_name: string;
+  id: any;
+}

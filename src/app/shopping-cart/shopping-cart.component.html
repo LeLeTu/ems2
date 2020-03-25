@@ -1,0 +1,100 @@
+<!-- <main class="container">
+  <mat-card>
+    <mat-card-title>
+      <span>Shopping Cart</span>
+      <span class="example-fill-remaining-space"></span>
+      <button mat-raised-button color="accent" routerLink="/products">Contine Shopping</button>
+      <button mat-raised-button color="primary" (click)="checkout()">Checkout</button>
+    </mat-card-title>
+    <mat-list>
+      <mat-list-item *ngFor="let item of items$ | async">
+        <div fxLayout="row" class="cart-item-container">
+          <div>
+            <img src="/assets/homebackground.png">
+          </div>
+          <div fxFlex="1 1 100%" fxLayout="column" fxLayoutAlign="center start" class="cart-item-info">
+            <span>{{item.event.venue_name}} - {{item.event.event_name}}</span>
+            <span>{{item.event.event_cost | currency}}</span>
+          </div>
+          <div class="qty">
+            <mat-form-field>
+              <mat-select [(value)]="item.qty" (selectionChange)="setCart(item.qty, item.event)">
+                <mat-option *ngFor="let qty of qtyArray;" [value]="qty">{{qty}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="text-middle">
+            <span class="cart-item-price">{{item.event.event_cost * item.qty | currency}}</span>
+          </div>
+          <div class="text-middle">
+            <a mat-icon-button color="primary" (click)="removeFromCart(item)">
+              <mat-icon class="mat-icon material-icons">remove_circle_outline</mat-icon>
+            </a>
+            <button (click)="removeFromCart(item)">Remove</button>
+          </div>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+</main>
+ -->
+
+ <h1>Shopping Cart</h1>
+ <div class="shopping-cart">
+   <div class="column-labels">
+     <label class="product-image">Image</label>
+     <label class="product-details">Product</label>
+     <label class="product-price">Price</label>
+     <label class="product-quantity">Quantity</label>
+     <label class="product-removal">Remove</label>
+     <label class="product-line-price">Total</label>
+   </div>
+   <div class="product" *ngFor="let item of items$ | async">
+     <div class="product-image">
+       <img src="/assets/homebackground.png">
+     </div>
+     <div class="product-details">
+       <div class="product-title">{{item.event.venue_name}} - {{item.event.event_name}}</div>
+       <!-- <p class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</p> -->
+     </div>
+     <div class="product-price">{{item.event.event_cost}}</div>
+     <div class="product-quantity">
+      <mat-form-field>
+        <mat-select [(value)]="item.qty" (selectionChange)="setCart(item.qty, item.event)">
+          <mat-option *ngFor="let qty of qtyArray;" [value]="qty">{{qty}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+     </div>
+     <div class="product-removal" (click)="removeFromCart(item)">
+      <button class="remove-product">
+        Remove
+      </button>
+      <!-- <a mat-icon-button color="primary" (click)="removeFromCart(item)">
+        <mat-icon class="mat-icon material-icons">remove_circle_outline</mat-icon>
+      </a> -->
+     </div>
+     <div class="product-line-price">{{item.event.event_cost * item.qty}}</div>
+   </div>
+ 
+
+ 
+   <div class="totals">
+     <div class="totals-item">
+       <label>Subtotal</label>
+       <div class="totals-value" id="cart-subtotal">{{totalprice | number : '1.2-2'}}</div>
+     </div>
+     <div class="totals-item">
+       <label>Tax (10%)</label>
+       <div class="totals-value" id="cart-tax">{{totalprice * 0.1 | number : '1.2-2'}}</div>
+     </div>
+     <div class="totals-item">
+       <label>Service Fee</label>
+       <div class="totals-value" id="cart-shipping">2.00</div>
+     </div>
+     <div class="totals-item totals-item-total">
+       <label>Grand Total</label>
+       <div class="totals-value" id="cart-total">{{totalprice*1.1 + 2 | number : '1.2-2'}}</div>
+     </div>
+   </div> 
+       <button class="checkout">Checkout</button>
+ </div>

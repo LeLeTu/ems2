@@ -1,0 +1,32 @@
+
+.events-list-section {
+  flex: 0 1 70%;
+  margin: 20px;
+
+  .events-list-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    .events-list-item {
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}
+
+.events-list-item-price {
+  font-size: 1.43em;
+  font-weight: bold;
+  line-height: 1;
+  margin-right: 8px;
+  margin-top: 10px;
+}
+
+.events-list-item-text {
+  color: rgba(0,0,0,0.54);
+  line-height: 1.43em;
+  font-family: 'Roboto','Helvetica-neue',sans-serif;
+  font-size: 14px;
+  margin-top: 10px;
+}

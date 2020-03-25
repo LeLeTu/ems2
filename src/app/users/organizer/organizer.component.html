@@ -1,0 +1,406 @@
+<!-- <div class="container">
+    <h3>Account Information</h3>
+    <br>
+    <div [hidden]="display_personal">
+    <h4>Personal Information</h4>
+    <form (ngSubmit)="onSavepersonal()" #organizerForm="ngForm">
+        <div class="form-group">
+          <label for="email address">Email Address</label>
+          <input type="text" class="form-control" id="Email Address"
+                 [(ngModel)]="model.emailaddress" name="emailaddress">
+        </div>
+        <button type="button" class="btn btn-default" (click)="Cancel();">Cancel</button>
+        <button type="submit" class="btn btn-success" [disabled]="!organizerForm.form.valid" (click)="display_personal=true">Change</button>
+      </form>
+    </div>
+      <br>
+      <hr>
+      <div [hidden]="!display_personal">
+        <h4>Personal Information</h4>
+        <div class="row">
+          <div class="col-xs-3"><p>Email Address:</p></div>
+          <div class="col-xs-9">{{ model.emailaddress }}</div>
+        </div>
+        <br>
+        <button class="btn btn-primary" (click)="display_personal=false">Edit</button>
+      </div>
+        
+      <div [hidden]="display_basic">
+        <h4>Basic Information</h4>
+        <form (ngSubmit)="onSaveinfo()" #organizerForm="ngForm">
+        <div class="form-group">
+          <label for="account name">Organizer Name</label>
+          <input type="text" class="form-control" id="Organizer Name"
+                 [(ngModel)]="model.organizername" name="organizername">
+        </div>
+  
+        <div class="form-group">
+          <label for="other details">Other Details</label>
+          <input type="text" class="form-control" id="Other Details"
+                 [(ngModel)]="model.otherdetails" name="otherdetails">
+        </div>
+        <button type="button" class="btn btn-default" (click)="Cancel();">Cancel</button>
+        <button type="submit" class="btn btn-success" [disabled]="!organizerForm.form.valid" (click)="display_basic=true">Save</button>
+      </form>
+      </div>
+      <br>
+      <hr>
+  <div [hidden]="!display_basic">
+    <h4>Basic Information</h4>
+    <div class="row">
+      <div class="col-xs-3"><p>Organizer Name:</p></div>
+      <div class="col-xs-9">{{ model.organizername }}</div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><p>Other Details:</p></div>
+      <div class="col-xs-9">{{ model.otherdetails }}</div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="display_basic=false">Edit</button>
+  </div>
+
+    <br>
+    <hr>
+    <div [hidden]="display_contact">
+      <h4>Contact Information</h4>
+      <form (ngSubmit)="onSavecontact()" #organizerForm="ngForm">
+      <div class="form-group">
+        <label for="contact name">Contact Name</label>
+        <input type="text" class="form-control" id="Contact Name"
+               [(ngModel)]="model.contactname" name="contactname">
+      </div>
+     
+     <div class="form-group">
+        <label for="telephone">Telephone</label>
+        <input type="text" class="form-control" id="Telephone"
+               [(ngModel)]="model.telephone" name="telephone">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="website address">Wedsite Address</label>
+        <input type="text" class="form-control" id="Wedsite Address"
+               [(ngModel)]="model.websiteaddress" name="websiteaddress">
+      </div>
+
+      <button type="button" class="btn btn-default" (click)="Cancel();">Cancel</button>
+      <button type="submit" class="btn btn-success" [disabled]="!organizerForm.form.valid" (click)="display_contact=true">Save</button>
+    </form>  
+    </div>
+
+    <div [hidden]="!display_contact">
+    <h4>Contact Information</h4>
+    <div class="row">
+      <div class="col-xs-3"><p>Contact Name:</p></div>
+      <div class="col-xs-9">{{ model.contactname }}</div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-3">Telephone:</div>
+      <div class="col-xs-9">{{ model.telephone }}</div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><p>Website address:</p></div>
+      <div class="col-xs-9">{{ model.websiteaddress }}</div>
+    </div>
+   <br>
+    <button class="btn btn-primary" (click)="display_contact=false">Edit</button>
+    </div>
+    <br>
+      <hr>
+    <div [hidden]="display_address">
+        <h4>Address</h4>
+        <form (ngSubmit)="onSaveaddress()" #organizerForm="ngForm">
+        <div class="form-group">
+          <label for="street1">Street1</label>
+          <input type="text" class="form-control" id="Street1"
+                 [(ngModel)]="model.street1" name="Street1">
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="street2">Street2</label>
+          <input type="text" class="form-control" id="Street2"
+                 [(ngModel)]="model.street2" name="street2">
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="city">city</label>
+          <input type="text" class="form-control" id="City"
+                 [(ngModel)]="model.city" name="city">
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="state">State</label>
+          <input type="text" class="form-control" id="State"
+                 [(ngModel)]="model.state" name="state">
+        </div>
+       <br>
+       <div class="form-group">
+          <label for="zipcode">Zip Code</label>
+          <input type="text" class="form-control" id="Zip Code"
+                 [(ngModel)]="model.zipcode" name="zipcode">
+        </div>
+        
+        <button type="button" class="btn btn-default" (click)="Cancel();">Cancel</button>
+        <button type="submit" class="btn btn-success" [disabled]="!organizerForm.form.valid" (click)="display_address=true">Save</button>
+        </form>
+    </div>
+
+      <div [hidden]="!display_address">
+      <h4>Address</h4>
+      <div class="row">
+      <div class="col-xs-3">Street1:</div>
+      <div class="col-xs-9">{{ model.street1 }}</div>
+    </div>
+     <br>
+    <div class="row">
+      <div class="col-xs-3">Street2:</div>
+      <div class="col-xs-9">{{ model.street2 }}</div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-3">City:</div>
+      <div class="col-xs-9">{{ model.city }}</div>
+    </div>
+     <br>
+    <div class="row">
+      <div class="col-xs-3">State:</div>
+      <div class="col-xs-9">{{ model.state }}</div>
+    </div>
+     <br>
+   <div class="row">
+      <div class="col-xs-3"><p>Zip code:</p></div>
+      <div class="col-xs-9">{{ model.zipcode }}</div>
+    </div>
+   <br>
+    <button class="btn btn-primary" (click)="display_address=false">Edit</button>
+    </div>
+  
+
+  <div>
+    <form>
+
+    </form>
+  </div>
+<hr>
+<style>
+  .no-style .ng-valid {
+  border-left: 1px  solid #CCC
+}
+
+  .no-style .ng-invalid {
+  border-left: 1px  solid #CCC
+}
+</style>
+
+
+ -->
+ <div class="container">
+  <h3>Account Information</h3>
+  <br>
+  <div [hidden]="display_personal">
+  <h4>Personal Information</h4>
+  <form (ngSubmit)="onSavepersonal()" #organizerForm="ngForm">
+      <div class="form-group">
+        <label for="email address">Email Address</label>
+        <input type="text" class="form-control" id="Email Address"
+               [(ngModel)]="model.email_address" name="emailaddress">
+      </div>
+      <button type="button" class="btn btn-default" (click)="Cancel();">Cancel</button>
+      <button type="submit" class="btn btn-success" [disabled]="!organizerForm.form.valid" (click)="display_personal=true">Change</button>
+    </form>
+  </div>
+    <br>
+    <hr>
+    <div [hidden]="!display_personal">
+      <h4>Personal Information</h4>
+      <div class="row">
+        <div class="col-xs-3"><p>Email Address:</p></div>
+        <div class="col-xs-9">{{ model.email_address }}</div>
+      </div>
+      <br>
+      <button class="btn btn-primary" (click)="display_personal=false">Edit</button>
+    </div>
+      
+    <div [hidden]="display_basic">
+      <h4>Basic Information</h4>
+      <br>
+      <form (ngSubmit)="onSaveinfo()" #organizerForm="ngForm">
+      <div class="form-group">
+        <label for="account name">Organizer Name</label>
+        <input type="text" class="form-control" id="Organizer Name"
+               [(ngModel)]="model.organizer_name" name="organizername">
+      </div>
+
+      <div class="form-group">
+        <label for="other details">Other Details</label>
+        <input type="text" class="form-control" id="Other Details"
+               [(ngModel)]="model.other_details" name="otherdetails">
+      </div>
+      <button type="button" class="btn btn-default" (click)="Cancel();">Cancel</button>
+      <button type="submit" class="btn btn-success" [disabled]="!organizerForm.form.valid" (click)="display_basic=true">Save</button>
+    </form>
+    </div>
+    <br>
+    <hr>
+<div [hidden]="!display_basic">
+  <h4>Basic Information</h4>
+  <br>
+  <div class="row">
+    <div class="col-xs-3"><p>Organizer Name:</p></div>
+    <div class="col-xs-9">{{ model.organizer_name }}</div>
+  </div>
+ 
+  <div class="row">
+    <div class="col-xs-3"><p>Other Details:</p></div>
+    <div class="col-xs-9">{{ model.other_details }}</div>
+  </div>
+  <br>
+  <button class="btn btn-primary" (click)="display_basic=false">Edit</button>
+</div>
+
+  <br>
+  <hr>
+  <div [hidden]="display_contact">
+    <h4>Contact Information</h4>
+    <form (ngSubmit)="onSavecontact()" #organizerForm="ngForm">
+    <div class="form-group">
+      <label for="contact name">Contact Name</label>
+      <input type="text" class="form-control" id="Contact Name"
+             [(ngModel)]="model.contact_name" name="contactname">
+    </div>
+   
+   <div class="form-group">
+      <label for="telephone">Telephone</label>
+      <input type="text" class="form-control" id="Telephone"
+             [(ngModel)]="model.telephone" name="telephone">
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="website address">Wedsite Address</label>
+      <input type="text" class="form-control" id="Wedsite Address"
+             [(ngModel)]="model.web_site_address" name="websiteaddress">
+    </div>
+
+    <button type="button" class="btn btn-default" (click)="Cancel();">Cancel</button>
+    <button type="submit" class="btn btn-success" [disabled]="!organizerForm.form.valid" (click)="display_contact=true">Save</button>
+  </form>  
+  </div>
+
+  <div [hidden]="!display_contact">
+  <h4>Contact Information</h4>
+  <div class="row">
+    <div class="col-xs-3"><p>Contact Name:</p></div>
+    <div class="col-xs-9">{{ model.contact_name }}</div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-3">Telephone:</div>
+    <div class="col-xs-9">{{ model.telephone }}</div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-3"><p>Website address:</p></div>
+    <div class="col-xs-9">{{ model.web_site_address }}</div>
+  </div>
+ <br>
+  <button class="btn btn-primary" (click)="display_contact=false">Edit</button>
+  </div>
+  <br>
+    <hr>
+  <div [hidden]="display_address">
+      <h4>Address</h4>
+      <form (ngSubmit)="onSaveaddress()" #organizerForm="ngForm">
+      <div class="form-group">
+        <label for="street1">Street1</label>
+        <input type="text" class="form-control" id="Street1"
+               [(ngModel)]="model.street1" name="Street1">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="street2">Street2</label>
+        <input type="text" class="form-control" id="Street2"
+               [(ngModel)]="model.street2" name="street2">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="city">city</label>
+        <input type="text" class="form-control" id="City"
+               [(ngModel)]="model.city" name="city">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="state">State</label>
+        <input type="text" class="form-control" id="State"
+               [(ngModel)]="model.state" name="state">
+      </div>
+     <br>
+     <div class="form-group">
+        <label for="zipcode">Zip Code</label>
+        <input type="text" class="form-control" id="Zip Code"
+               [(ngModel)]="model.zipcode" name="zipcode">
+      </div>
+      
+      <button type="button" class="btn btn-default" (click)="Cancel();">Cancel</button>
+      <button type="submit" class="btn btn-success" [disabled]="!organizerForm.form.valid" (click)="display_address=true">Save</button>
+      </form>
+  </div>
+
+    <div [hidden]="!display_address">
+    <h4>Address</h4>
+    <div class="row">
+    <div class="col-xs-3">Street1:</div>
+    <div class="col-xs-9">{{ model.street1 }}</div>
+  </div>
+   <br>
+  <div class="row">
+    <div class="col-xs-3">Street2:</div>
+    <div class="col-xs-9">{{ model.street2 }}</div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-3">City:</div>
+    <div class="col-xs-9">{{ model.city }}</div>
+  </div>
+   <br>
+  <div class="row">
+    <div class="col-xs-3">State:</div>
+    <div class="col-xs-9">{{ model.state }}</div>
+  </div>
+   <br>
+ <div class="row">
+    <div class="col-xs-3"><p>Zip code:</p></div>
+    <div class="col-xs-9">{{ model.zipcode }}</div>
+  </div>
+ <br>
+  <button class="btn btn-primary" (click)="display_address=false">Edit</button>
+  </div>
+
+
+
+
+
+
+<!-- ====================================================  -->
+<div>
+  <form>
+
+     <!-- ... all of the form ... -->
+
+  </form>
+</div>
+
+<!-- ====================================================  -->
+<hr>
+<style>
+.no-style .ng-valid {
+border-left: 10px  solid #CCC
+}
+.no-style .ng-valid {
+ justify-content:center;
+}
+.no-style .ng-invalid {
+border-left: 5px  solid #CCC
+}
+</style>

@@ -1,0 +1,31 @@
+<main class="container">
+    <mat-card fxFlex.gt-sm="60%" fxFlexOffset.gt-sm="20%">
+      <mat-card-title>Reset Email</mat-card-title>
+      <form [formGroup]="resetemailFormGroup" (ngSubmit)="onSubmit()" fxLayout="column" #resetpasswordForm="ngForm">
+        <mat-form-field>
+          <mat-placeholder>Please Paste Token from Email</mat-placeholder>
+          <input type="text" matInput id="token" name="token" formControlName="token" required>
+          <mat-error *ngIf="resetemailFormGroup.get('token').invalid">
+            {{getError('token')}}
+          </mat-error>
+        </mat-form-field>
+        Time Remaining: {{currTime}} s
+        <button *ngIf="currTime > 0  else able" [disabled]="disable" mat-raised-button color="disable">Resend Email</button>
+        <ng-template #able>
+          <button (click)="resend()"  mat-raised-button color="primary">Resend Email</button>
+        </ng-template>
+        <mat-form-field>
+          <mat-placeholder>Input New Email</mat-placeholder>
+          <input type="text" matInput id="newemail" formControlName="newemail" required>
+          <mat-error *ngIf="resetemailFormGroup.get('newemail').invalid && resetemailFormGroup.get('newemail').errors.required && (resetemailFormGroup.get('newemail').touched || resetemailFormGroup.get('newemail').dirty)">
+            New Email is required
+          </mat-error>
+        </mat-form-field>
+        <div>
+          <button type="submit" mat-raised-button color="primary" style="background-color: #66A756;">Reset Email</button>
+        </div>
+      </form>
+    </mat-card>
+  </main>
+  
+  

@@ -1,0 +1,103 @@
+ <!--<mat-card fxFlex.gt-sm="60%" fxFlexOffset.gt-sm="20%">-->
+    <!--<mat-card-title>Room</mat-card-title>-->
+    <!--<form (ngSubmit)="onSubmit()" fxLayout="column" #roomForm="ngForm">-->
+      <!--<mat-form-field>-->
+        <!--<mat-placeholder>Room_id</mat-placeholder>-->
+        <!--<input type="text" matInput name="room_id" [(ngModel)]="room.room_id">-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+        <!--<mat-placeholder>Venue_id</mat-placeholder>-->
+        <!--<input type="email" matInput name="venue_id" [(ngModel)]="room.venue_id">-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+        <!--<mat-placeholder>Room_name</mat-placeholder>-->
+        <!--<input type="tel" matInput name="room_name" [(ngModel)]="room.room_name">-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+        <!--<mat-placeholder>Room_capability</mat-placeholder>-->
+        <!--<input type="text" matInput name="room_capability" [(ngModel)]="room.room_capability">-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+        <!--<mat-placeholder>Rate_for_day</mat-placeholder>-->
+        <!--<input type="text" matInput name="rate_for_day" [(ngModel)]="room.rate_for_day">-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+        <!--<mat-placeholder>Other_details</mat-placeholder>-->
+        <!--<input type="text" matInput name="other_details" [(ngModel)]="room.other_details">-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+        <!--<mat-placeholder>Space_request_id</mat-placeholder>-->
+        <!--<input type="text" matInput name="space_request_id" [(ngModel)]="room.space_request_id">-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+        <!--<mat-placeholder>Event_id</mat-placeholder>-->
+        <!--<input type="text" matInput name="event_id" [(ngModel)]="room.event_id">-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+        <!--<mat-placeholder>Booking_status</mat-placeholder>-->
+        <!--<input type="text" matInput name="booking_status" [(ngModel)]="room.booking_status">-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+        <!--<mat-placeholder>Occupancy</mat-placeholder>-->
+        <!--<input type="text" matInput name="occupancy" [(ngModel)]="room.occupancy">-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+        <!--<mat-placeholder>Commercial_or_free</mat-placeholder>-->
+        <!--<input type="text" matInput name="commercial_or_free" [(ngModel)]="room.commercial_or_free">-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+        <!--<mat-placeholder>Occupancy_date_from</mat-placeholder>-->
+        <!--<input type="text" matInput name="occupancy_date_from" [(ngModel)]="room.occupancy_date_from">-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+        <!--<mat-placeholder>Occupancy_date_to</mat-placeholder>-->
+        <!--<input type="text" matInput name="occupancy_date_to" [(ngModel)]="room.occupancy_date_to">-->
+      <!--</mat-form-field>-->
+      <!--<div>-->
+        <!--<button type="submit" mat-raised-button color="primary">Find Room Information</button>-->
+      <!--</div>-->
+      <!--<div>-->
+        <!--<button type="submit" mat-raised-button color="primary" (click)="findSeat(room.room_id)"> Next step: Find Available Seat</button>-->
+      <!--</div>-->
+    <!--</form>-->
+  <!--</mat-card>-->
+ <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+   <ng-container matColumnDef="room_name">
+     <th mat-header-cell *matHeaderCellDef> Room Name </th>
+     <td mat-cell *matCellDef="let element"> {{element.room_name}} </td>
+   </ng-container>
+
+   <ng-container matColumnDef="room_capability">
+     <th mat-header-cell *matHeaderCellDef> Room Capacity </th>
+     <td mat-cell *matCellDef="let element"> {{element.room_capability}} </td>
+   </ng-container>
+
+   <ng-container matColumnDef="rate_for_day">
+     <th mat-header-cell *matHeaderCellDef> Room Price </th>
+     <td mat-cell *matCellDef="let element"> {{element.rate_for_day}} </td>
+   </ng-container>
+
+   <ng-container matColumnDef="other_details">
+     <th mat-header-cell *matHeaderCellDef> Room Details </th>
+     <td mat-cell *matCellDef="let element"> {{element.other_details}} </td>
+   </ng-container>
+
+   <!--<ng-container matColumnDef="room_id">-->
+     <!--<th mat-header-cell *matHeaderCellDef> Check Available Seat </th>-->
+     <!--<td mat-cell *matCellDef="let element"> {{element.room_id}} </td>-->
+   <!--</ng-container>-->
+   <ng-container matColumnDef="checkseat">
+     <th mat-header-cell *matHeaderCellDef> Check Available Seat </th>
+     <td mat-cell *matCellDef="let element">
+       <button mat-raised-button (click)="checkavailableseat(element)">View the Seats</button>
+     </td>
+   </ng-container>
+   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+ </table>
+
+ <!--<div class="product-detail-info-cart-button-container">-->
+ <!--<button mat-raised-button color="primary" class="btn-block" (click)="addToCart()">ADD TO CART</button>-->
+ <!--</div>-->

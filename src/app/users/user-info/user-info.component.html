@@ -1,0 +1,176 @@
+<div class="container">
+  <h2>Account Information</h2>
+<mat-card fxFlex.gt-sm="80%" fxFlexOffset.gt-sm="20%">
+  <mat-tab-group dynamicHeight>
+    <mat-tab label="User Profile">
+      <div class="example-small-box mat-elevation-z4">
+        <form fxLayout="column" #userDetailForm="ngForm" (ngSubmit)="editall()">
+    
+          <div [hidden] = "!showall">
+            <button type="submit" mat-button color="primary" (click)="showall=false">Edit All</button>
+          </div>
+          <div [hidden] = "showall">
+            <button type="button" class="btn btn-default" (click)="Cancelall();">Cancel</button>
+            <button type="submit" class="btn btn-success" [disabled]="!organizerForm.form.valid" (click)="showall=true">Change All</button>
+          </div>
+          <hr> 
+          <div [hidden]="showname">
+            <h4>Name</h4>
+            <form (ngSubmit)="editname()" #organizerForm="ngForm" >
+              <div class="form-group" >
+                <input type="text" class="form-control" id="name"
+                       [(ngModel)]="user.name" name="name" style="width:100%;">
+              </div>
+              <button type="button" class="btn btn-default" (click)="Cancelname();">Cancel</button>
+              <button type="submit" class="btn btn-success" [disabled]="!organizerForm.form.valid" (click)="showname=true">Change</button>
+            </form>
+          </div>
+
+          <div [hidden] ="!showname">
+            <mat-form-field>
+              <mat-placeholder>Name</mat-placeholder>
+              <input type="text" matInput name="name" [(ngModel)]="user.name">
+            </mat-form-field>
+            <button type="submit" mat-raised-button color="primary" (click)="showname=false">Edit</button>
+          </div>
+
+          <div [hidden]="showphone">
+            <h4>Phone</h4>
+            <form (ngSubmit)="editphone()" #organizerForm="ngForm" >
+              <div class="form-group" >
+                <input type="text" [textMask]="{mask: mask}" class="form-control" id="phone"
+                       [(ngModel)]="user.phone" name="phone" style="width:100%;">
+              </div>
+              <button type="button" class="btn btn-default" (click)="Cancelphone();">Cancel</button>
+              <button type="submit" class="btn btn-success" [disabled]="!organizerForm.form.valid" (click)="showphone=true">Change</button>
+            </form>
+          </div>
+          <hr>
+          <div [hidden]="!showphone">
+            <mat-form-field>
+              <mat-placeholder>Phone</mat-placeholder>
+              <input type="tel" [textMask]="{mask: mask}" matInput name="phone" [(ngModel)]="user.phone">
+            </mat-form-field>
+            <button type="submit" mat-raised-button color="primary" (click)="showphone=false">Edit</button>
+          </div>
+          
+        </form>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Update Your Email Address">
+      <div class="example-large-box mat-elevation-z4">
+        <form fxLayout="column" #userDetailForm="ngForm">
+          <div [hidden]="showemail">
+            <h4>Email</h4>
+            <form (ngSubmit)="editemail()" #organizerForm="ngForm" >
+              <div class="form-group" >
+                <input [disabled]="true" type="text" class="form-control" id="email"
+                       [(ngModel)]="user.email" name="email" style="width:100%;">
+              </div>
+              <button type="button" class="btn btn-default" (click)="Cancelemail();">Cancel</button>
+              <button type="submit" class="btn btn-success" [disabled]="!organizerForm.form.valid" (click)="showemail=true">Change</button>
+            </form>
+          </div>
+
+          <div [hidden]="!showemail">
+            <mat-form-field>
+              <mat-placeholder>Email</mat-placeholder>
+              <input [disabled]="true" type="email" matInput name="email" >
+              {{user.email}}
+            </mat-form-field>
+            <button type="submit" mat-raised-button color="primary" (click)="showemail=false">Edit</button>
+          </div>
+        </form>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+  <!--<form fxLayout="column" #userDetailForm="ngForm">-->
+
+
+    <!--<div [hidden]="showname">-->
+      <!--<h4>Name</h4>-->
+      <!--<form (ngSubmit)="editname()" #organizerForm="ngForm" >-->
+          <!--<div class="form-group" >-->
+            <!--<input type="text" class="form-control" id="name"-->
+                   <!--[(ngModel)]="user.name" name="name" style="width:50%;margin-left:25%;">-->
+          <!--</div>-->
+          <!--<button type="button" class="btn btn-default" (click)="Cancel();">Cancel</button>-->
+          <!--<button type="submit" class="btn btn-success" [disabled]="!organizerForm.form.valid" (click)="showname=true">Change</button>-->
+        <!--</form>-->
+      <!--</div>-->
+
+      <!--<div [hidden] ="!showname">-->
+        <!--<mat-form-field>-->
+          <!--<mat-placeholder>Name</mat-placeholder>-->
+          <!--<input type="text" matInput name="name" [(ngModel)]="user.name">-->
+        <!--</mat-form-field>-->
+        <!--<button type="submit" mat-raised-button color="primary" (click)="showname=false">Edit</button>-->
+      <!--</div>-->
+
+      <!--<div [hidden]="showemail">-->
+        <!--<h4>Email</h4>-->
+        <!--<form (ngSubmit)="editemail()" #organizerForm="ngForm" >-->
+            <!--<div class="form-group" >-->
+              <!--<input [disabled]="true" type="text" class="form-control" id="email"-->
+                     <!--[(ngModel)]="user.email" name="email" style="width:50%;margin-left:25%;">-->
+            <!--</div>-->
+            <!--<button type="button" class="btn btn-default" (click)="Cancel();">Cancel</button>-->
+            <!--<button type="submit" class="btn btn-success" [disabled]="!organizerForm.form.valid" (click)="showemail=true">Change</button>-->
+          <!--</form>-->
+        <!--</div>-->
+
+    <!--<div [hidden]="!showemail">-->
+      <!--<hr>-->
+      <!--<mat-form-field>-->
+        <!--<mat-placeholder>Email</mat-placeholder>-->
+         <!--<input [disabled]="true" type="email" matInput name="email" >-->
+         <!--{{user.email}}-->
+      <!--</mat-form-field>-->
+      <!--<button type="submit" mat-raised-button color="primary" (click)="showemail=false">Edit</button>-->
+    <!--</div>-->
+
+    <!--<div [hidden]="showphone">-->
+      <!--<h4>Phone</h4>-->
+      <!--<form (ngSubmit)="editphone()" #organizerForm="ngForm" >-->
+          <!--<div class="form-group" >-->
+            <!--<input type="text" [textMask]="{mask: mask}" class="form-control" id="phone"-->
+                   <!--[(ngModel)]="user.phone" name="phone" style="width:50%;margin-left:25%;">-->
+          <!--</div>-->
+          <!--<button type="button" class="btn btn-default" (click)="Cancel();">Cancel</button>-->
+          <!--<button type="submit" class="btn btn-success" [disabled]="!organizerForm.form.valid" (click)="showphone=true">Change</button>-->
+        <!--</form>-->
+      <!--</div>-->
+    <!--<hr>-->
+    <!--<div [hidden]="!showphone">-->
+      <!--<mat-form-field>-->
+        <!--<mat-placeholder>Phone</mat-placeholder>-->
+        <!--<input type="tel" [textMask]="{mask: mask}" matInput name="phone" [(ngModel)]="user.phone">-->
+      <!--</mat-form-field>-->
+      <!--<button type="submit" mat-raised-button color="primary" (click)="showphone=false">Edit</button>-->
+    <!--</div>-->
+
+
+    <!--<div [hidden]="showpassword">-->
+      <!--<h4>Password</h4>-->
+      <!--<form (ngSubmit)="editpassword()" #organizerForm="ngForm" >-->
+          <!--<div class="form-group" >-->
+            <!--<input type="text" class="form-control" id="password"-->
+                   <!--[(ngModel)]="user.phone" name="phone" style="width:50%;margin-left:25%;">-->
+          <!--</div>-->
+          <!--<button type="button" class="btn btn-default" (click)="Cancel();">Cancel</button>-->
+          <!--<button type="submit" class="btn btn-success" [disabled]="!organizerForm.form.valid" (click)="showpassword=true">Change</button>-->
+        <!--</form>-->
+      <!--</div>-->
+    <!--<hr>-->
+    <!--<div [hidden]="!showpassword">-->
+      <!--<mat-form-field>-->
+        <!--<mat-placeholder>Password</mat-placeholder>-->
+        <!--<input type="password" matInput name="psw" [(ngModel)]="user.psw">-->
+      <!--</mat-form-field>-->
+      <!--<button type="submit" mat-raised-button color="primary" (click)="showpassword=false">Edit</button>-->
+    <!--</div>-->
+  <!--</form>-->
+</mat-card>
+</div>
